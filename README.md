@@ -1,6 +1,2 @@
-joomla-tags-selected
-====================
-This module displays a given number of articles with the selected tag.
-
-User can select the tag from the list of the tags as well as the maximum number of articles to be displayed. The module will then display a list of articles with the selected tag.
-Currently the module sorts the articles by the ascending order of their titles.
+this is simple module for selecting articles thah have special tags. it is based on https://github.com/lasinducharith/joomla-tags-selected.git aand i want to add some features like sliding content or news ticket display to it. 
+now it can select articles that have one or more tags, you can tell it how many articles must be selected and how must be orders articles..
