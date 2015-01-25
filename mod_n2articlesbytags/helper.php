@@ -27,11 +27,13 @@ abstract class ModN2ArticlesByTagsHelper
 		//$matchtype  = $params->get('matchtype', 'all');
 		$maximum    = $params->get('maximum', 5);
 		$tagsHelper = new JHelperTags;
+                $n2tagsHelper = new n2tags();
 		$option     = $app->input->get('option');
 		$view       = $app->input->get('view');
 		$prefix     = $option . '.' . $view;
 		$id         = (array) $app->input->getObject('id');
-		$selectedTag = $params->get('selected_tag');
+		$catids = implode(',',$params->get('catids'));
+                $includecatchilds = $params->get('includecatchildren')==1 ? true : false ;
                 $selectedTags = $params->get('selectedtags');
              
 		// Strip off any slug data.
@@ -45,7 +47,7 @@ abstract class ModN2ArticlesByTagsHelper
 		}
 
                 //$tagsToMatch = $selectedTag;
-                $tagsToMatch = $selectedTags;
+                $tagsToMatch =  implode(',',$selectedTags) ;
                 if (!$tagsToMatch || is_null($tagsToMatch))
                 {
                     return $results = false;
@@ -64,7 +66,11 @@ abstract class ModN2ArticlesByTagsHelper
                 //var_dump($_anyorall);
                 
                 //$query=$tagsHelper->getTagItemsQuery($tagsToMatch, $typesr = null, $includeChildren = $includechildren, $orderByOption = $params->get('orderbyoption'), $orderDir = $params->get('orderdir'),$anyOrAll = $_anyOrAll, $languageFilter = 'all', $stateFilter = '0,1');
-                $query=$tagsHelper->getTagItemsQuery($tagsToMatch, null, false, $params->get('orderbyoption'), $params->get('orderdir'),false, 'all',  '0,1');
+                //$query=$tagsHelper->getTagItemsQuery($tagsToMatch, null, $includeChildren = $includechildren, $params->get('orderbyoption'), $params->get('orderdir'),$anyOrAll = $_anyorall, 'all',  '0,1');
+                //var_dump($tagsToMatch);
+                //echo '<hr/>';
+                
+                $query= $n2tagsHelper->getTagItemsQuery($tagsToMatch, null, $includeChildren = $includechildren, $params->get('orderbyoption'), $params->get('orderdir'),$anyOrAll = $_anyorall, 'all',  '0,1', $catIds =$catids, $includecatchilds);
                 //echo '<hr/>'.$query.'<hr/>';
                 $db->setQuery($query, 0, $maximum);
                 $results = $db->loadObjectList();

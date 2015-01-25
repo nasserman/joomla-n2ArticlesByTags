@@ -11,7 +11,8 @@
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <authorEmail>nasser.man@gmail.com</authorEmail>
     <authorUrl>http://ressan.ir</authorUrl>
-    <version>0.00.62</version>
+    <version>0.01.31
+    </version>
     <description>MOD_TAGS_SELECTED_XML_DESCRIPTION</description>
     <files>
         <filename module="mod_n2articlesbytags">mod_n2articlesbytags.php</filename>
@@ -20,6 +21,7 @@
         <folder>models</folder>
         <filename>helper.php</filename>
         <filename>index.html</filename>
+        <filename>n2tags.php</filename>
         <filename>mod_n2articlesbytags.xml</filename>
     </files>
     <languages>
@@ -30,6 +32,22 @@
     <config>
         <fields name="params">
             <fieldset name="basic" addfieldpath="/modules/mod_n2articlesbytags/models/fields/" >
+                
+                <field 
+                    name="catids" 
+                    type="category" 
+                    extension="com_content" 
+                    multiple="true" 
+                    label="MOD_N2ARTICLESBYTAGS_CATIDS_LABEL" 
+                    description="MOD_N2ARTICLESBYTAGS_CATIDS_DESC" >
+                </field>
+                
+                <field name="includecatchildren" type="list" default="1" 
+                       label="MOD_N2ARTICLESBYTAGS_INCLUDECATCHILDREN_LABEL" 
+                       description="MOD_N2ARTICLESBYTAGS_INCLUDECATCHILDREN_DESC">
+                    <option value="0">NO</option>
+                    <option value="1">YES</option>
+                </field>                
                 
                 <field
                     name="maximum"
@@ -69,6 +87,7 @@
                     <option value="c.core_publish_up">c.core_publish_up</option>
                     <option value="c.core_content_item_id">c.core_content_item_id</option>
                     <option value="c.core_ordering">c.core_ordering</option>
+                    <option value="match_count">match_count</option>
                 </field>
                 
                 <field name="orderdir" type="list" default="DESC" 

@@ -11,6 +11,7 @@ defined('_JEXEC') or die;
 
 // Include the syndicate functions only once
 require_once __DIR__ . '/helper.php';
+require_once __DIR__.'/n2tags.php';
 
 $cacheparams = new stdClass;
 $cacheparams->cachemode = 'safeuri';

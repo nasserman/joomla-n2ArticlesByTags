@@ -20,6 +20,7 @@ defined('_JEXEC') or die;
             <a href="<?php echo JRoute::_(TagsHelperRoute::getItemRoute($item->content_item_id, $item->core_alias, $item->core_catid, $item->core_language, $item->type_alias, $item->router)); ?>">
                     <?php if (!empty($item->core_title)) :
                             echo htmlspecialchars($item->core_title);
+                        //echo $item->match_count;
                     endif; ?>
             </a>
         </li>
@@ -29,3 +30,8 @@ defined('_JEXEC') or die;
         <span><?php echo JText::_('MOD_TAGS_SIMILAR_NO_MATCHING_TAGS'); ?></span>
     <?php endif; ?>
 </div>
+<?php
+echo "<div style='text-align: center;font-size: 9px;'>";
+echo 'تاریخ ایجاد ماژول : ',JHtml::date(new JDate(),'y-m-d g:i a');
+echo "</div>";
+?>
