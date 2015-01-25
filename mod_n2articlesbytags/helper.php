@@ -53,12 +53,12 @@ abstract class ModN2ArticlesByTagsHelper
                 //var_dump($tagsToMatch);
 
                 $_anyorall = FALSE;
-                if($params->get('anyorall')){
+                if($params->get('anyorall')==1){
                     $_anyorall = TRUE;
                 }
                 
                 $includechildren = FALSE;
-                if($params->get('includechildren')){
+                if($params->get('includechildren')==1){
                     $includechildren = TRUE;
                 }
                 //var_dump($_anyorall);

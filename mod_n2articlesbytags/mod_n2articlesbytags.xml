@@ -11,7 +11,7 @@
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <authorEmail>nasser.man@gmail.com</authorEmail>
     <authorUrl>http://ressan.ir</authorUrl>
-    <version>0.00.58</version>
+    <version>0.00.62</version>
     <description>MOD_TAGS_SELECTED_XML_DESCRIPTION</description>
     <files>
         <filename module="mod_n2articlesbytags">mod_n2articlesbytags.php</filename>
