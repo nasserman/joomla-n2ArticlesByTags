@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+    type="module"
+    version="3.1"
+    client="site"
+    method="upgrade">
+    <name>N2 Articles By Tags</name>
+    <author>Nasser Mansouri</author>
+    <creationDate>January 2015</creationDate>
+    <copyright>Copyright. (C) 2005 - 2013 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>nasser.man@gmail.com</authorEmail>
+    <authorUrl>http://ressan.ir</authorUrl>
+    <version>0.00.58</version>
+    <description>MOD_TAGS_SELECTED_XML_DESCRIPTION</description>
+    <files>
+        <filename module="mod_n2articlesbytags">mod_n2articlesbytags.php</filename>
+        <folder>tmpl</folder>
+        <folder>language</folder>
+        <folder>models</folder>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <filename>mod_n2articlesbytags.xml</filename>
+    </files>
+    <languages>
+        <language tag="en-GB">language/en-GB/en-GB.mod_n2articlesbytags.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.mod_n2articlesbytags.sys.ini</language>
+    </languages>
+    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_TAGS_SELECTED" />
+    <config>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/modules/mod_n2articlesbytags/models/fields/" >
+                
+                <field
+                    name="maximum"
+                    type="integer"
+                    default="5"
+                    first="1"
+                    last="20"
+                    step="1"
+                    label="MOD_N2ARTICLESBYTAGS_MAX_LABEL"
+                    description="MOD_N2ARTICLESBYTAGS_MAX_DESC">
+                </field>
+                    
+                <field 
+                    name="selectedtags" 
+                    type="n2tags" 
+                    label="MOD_N2ARTICLESBYTAGS_SELECTEDTAGS_LABEL"
+                    description="MOD_N2ARTICLESBYTAGS_SELECTEDTAGS_DESC" 
+                    multiple="true" 
+                    required="true">
+                </field>
+                
+                <field name="includechildren" type="list" default="1" 
+                       label="MOD_N2ARTICLESBYTAGS_INCLUDECHILDREN_LALEL" 
+                       description="MOD_N2ARTICLESBYTAGS_INCLUDECHILDREN_DESC">
+                    <option value="0">NO</option>
+                    <option value="1">YES</option>
+                </field>
+                
+                <field name="orderbyoption" type="list" default="c.core_publish_up" 
+                       label="MOD_N2ARTICLESBYTAGS_ORDERBYOPTION_LABEL" 
+                       description="MOD_N2ARTICLESBYTAGS_ORDERBYOPTION_DESC">
+                    <option value="c.core_content_id">c.core_content_id</option>
+                    <option value="c.core_title">c.core_title</option>
+                    <option value="c.core_hits">c.core_hits</option>
+                    <option value="c.core_create_time">c.core_create_time</option>
+                    <option value="c.core_modified_time">c.core_modified_time</option>
+                    <option value="c.core_publish_up">c.core_publish_up</option>
+                    <option value="c.core_content_item_id">c.core_content_item_id</option>
+                    <option value="c.core_ordering">c.core_ordering</option>
+                </field>
+                
+                <field name="orderdir" type="list" default="DESC" 
+                       label="MOD_N2ARTICLESBYTAGS_ORDERDIR_LABEL" 
+                       description="MOD_N2ARTICLESBYTAGS_ORDERDIR_DESC">
+                        <option value="ASC">ASC</option>
+                        <option value="DESC">DESC</option>
+                </field>
+                
+                <field name="anyorall" type="list" default="1" 
+                       label="MOD_N2ARTICLESBYTAGS_ANYORALL_LABEL" 
+                       description="MOD_N2ARTICLESBYTAGS_ANYORALL_DESC">
+                        <option value="1">ANY</option>
+                        <option value="0">ALL</option>
+                </field>                
+                
+            </fieldset>
+                    
+            <fieldset   name="advanced">
+                <field
+                        name="layout"
+                        type="modulelayout"
+                        label="JFIELD_ALT_LAYOUT_LABEL"
+                        description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+                <field
+                        name="moduleclass_sfx"
+                        type="textarea" rows="3"
+                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+                <field
+                        name="owncache"
+                        type="list"
+                        default="1"
+                        label="COM_MODULES_FIELD_CACHING_LABEL"
+                        description="COM_MODULES_FIELD_CACHING_DESC">
+                        <option
+                                value="1">JGLOBAL_USE_GLOBAL</option>
+                        <option
+                                value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+            </fieldset>
+        
+        </fields>
+    </config>
+</extension>
