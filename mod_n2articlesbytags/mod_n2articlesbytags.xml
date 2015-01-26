@@ -11,7 +11,7 @@
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <authorEmail>nasser.man@gmail.com</authorEmail>
     <authorUrl>http://ressan.ir</authorUrl>
-    <version>0.01.36
+    <version>0.01.37
     </version>
     <description>MOD_TAGS_SELECTED_XML_DESCRIPTION</description>
     <files>
@@ -32,6 +32,12 @@
     <config>
         <fields name="params">
             <fieldset name="basic" addfieldpath="/modules/mod_n2articlesbytags/models/fields/" >
+                
+                <field
+                    name="layout"
+                    type="modulelayout"
+                    label="MOD_N2ARTICLESBYTAGS_LAYOUT_LABEL"
+                    description="MOD_N2ARTICLESBYTAGS_LAYOUT_DESC" />
                 
                 <field 
                     name="catids" 
@@ -107,11 +113,7 @@
             </fieldset>
                     
             <fieldset   name="advanced">
-                <field
-                        name="layout"
-                        type="modulelayout"
-                        label="JFIELD_ALT_LAYOUT_LABEL"
-                        description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
                 <field
                         name="moduleclass_sfx"
                         type="textarea" rows="3"
