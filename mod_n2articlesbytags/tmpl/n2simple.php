@@ -27,10 +27,11 @@ defined('_JEXEC') or die;
     ?>
     <div class="n2simple">
         <div class="n2simple-cola">
+            <?php if(strlen($image_url)>5): ?>
             <a href="<?php echo $link; ?>">
                 <img src="<?php echo $image_url; ?>"/>
             </a>
-                
+            <?php endif; ?> 
             <a href="<?php echo $link; ?>">
                 <h3><?php if (!empty($first_item->core_title)){
                         echo htmlspecialchars(strip_tags($first_item->core_title));}
