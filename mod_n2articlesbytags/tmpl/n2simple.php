@@ -16,26 +16,49 @@ defined('_JEXEC') or die;
     
     
     <!-- n2 simple start ------------------------------------------------------>
-    <div>
-        <div class="n2simple-cola"></div>
+    <?php 
+        $count = count($list);
+        $first_item = $list[0];
+        $first_item->route = new JHelperRoute;
+        $link = JRoute::_(TagsHelperRoute::getItemRoute($first_item->content_item_id, $first_item->core_alias, $first_item->core_catid, $first_item->core_language, $first_item->type_alias, $first_item->router));
+        $image_url = json_decode($first_item->core_images)->image_intro;
+        //var_dump($first_item);
+        //echo '<hr/>';
+    ?>
+    <div class="n2simple">
+        <div class="n2simple-cola">
+            <a href="<?php echo $link; ?>">
+                <img src="<?php echo $image_url; ?>"/>
+            </a>
+                
+            <a href="<?php echo $link; ?>">
+                <h3><?php if (!empty($first_item->core_title)){
+                        echo htmlspecialchars(strip_tags($first_item->core_title));}
+                    ?></h3>
+            </a>
+            <div class="n2simple-body">
+            <?php echo htmlspecialchars(strip_tags($first_item->core_body)); ?>
+            </div>
+        </div>
         
-        <div class="n2simple-colb"></div>
+        <div class="n2simple-colb">
+            <?php for($k=1;$k<count($list);$k++):?>
+            <?php 
+            $item = $list[$k];
+            $item->route = new JHelperRoute;
+            $link = JRoute::_(TagsHelperRoute::getItemRoute($item->content_item_id, $item->core_alias, $item->core_catid, $item->core_language, $item->type_alias, $item->router)); 
+            //$image_url = json_decode($item->core_images)->image_intro;
+            ?>
+            <div class="n2simple-row">
+                <a href="<?php echo $link; ?>">
+<!--                    <img src="<?php echo $image_url; ?>"/>-->
+                    <h4><?php echo ' -  '.htmlspecialchars($item->core_title); ?></h4>
+                </a>
+            </div>            
+            <?php endfor; ?>
+        </div>
     </div>
     <!-- n2 simple end -------------------------------------------------------->
-    
-    <ul>
-    <?php foreach ($list as $i => $item) : ?>
-        <li>
-            <?php $item->route = new JHelperRoute; ?>
-            <a href="<?php echo JRoute::_(TagsHelperRoute::getItemRoute($item->content_item_id, $item->core_alias, $item->core_catid, $item->core_language, $item->type_alias, $item->router)); ?>">
-                    <?php if (!empty($item->core_title)) :
-                            echo htmlspecialchars($item->core_title);
-                        //echo $item->match_count;
-                    endif; ?>
-            </a>
-        </li>
-    <?php endforeach; ?>
-    </ul>
     <?php else : ?>
         <span><?php echo JText::_('MOD_TAGS_SIMILAR_NO_MATCHING_TAGS'); ?></span>
     <?php endif; ?>
@@ -45,3 +68,34 @@ echo "<div style='text-align: center;font-size: 9px;'>";
 echo 'تاریخ ایجاد ماژول : ',JHtml::date(new JDate(),'y-m-d g:i a');
 echo "</div>";
 ?>
+
+
+
+<style>
+.n2simple{}
+.n2articlesbytags{}
+.n2simple-body{text-align: justify;}
+.n2simple-cola{display: inline-block;vertical-align: top;width: 45%;}
+.n2simple-colb{  border-right: 1px solid #aaa;
+    display: inline-block;
+    margin-right: 10px;
+    padding-right: 10px;
+    vertical-align: top;
+    width: 45%;}
+.n2simple-row{}
+.n2simple-cola img {
+    max-height: 250px;
+    max-width: 100%;
+}
+.n2simple-row img {
+    display: inline;
+    max-height: 70px;
+    max-width: 80px;
+    vertical-align: middle;
+}
+.n2simple-row h4 {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    text-align: justify;
+}
+</style>
