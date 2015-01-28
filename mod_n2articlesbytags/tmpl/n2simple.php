@@ -27,7 +27,7 @@ defined('_JEXEC') or die;
     ?>
     <div class="n2simple">
         <div class="n2simple-cola">
-            <?php if(strlen($image_url)>5): ?>
+            <?php if($image_url): ?>
             <a href="<?php echo $link; ?>">
                 <img src="<?php echo $image_url; ?>"/>
             </a>

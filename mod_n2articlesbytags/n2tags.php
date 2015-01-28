@@ -128,7 +128,7 @@ class n2tags extends JHelperTags {
                     $cats = array();
                     $a2 = explode(',', $catIds);
                     while (count($a2)>0){
-                        $query_str = " select id from #__categories where parent_id in ('".  implode(',', $a2)."') and published = 1 and title !='ROOT'" ;
+                        $query_str = " select * from #__categories where parent_id in (".  implode(',', $a2).") and published = 1 and title !='ROOT'" ;
                         $db2 = JFactory::getDbo();
                         $db2->setQuery($query_str);  
                         $a3 = $db2->loadObjectList();
